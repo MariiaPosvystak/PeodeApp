@@ -4,12 +4,17 @@
 
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+        <h1 id="title">Meie pühas</h1>
     </section>
 
     <div class="row">
-        @Html.ActionLink("Vastan küsimustele","Ankeet","Ankeet",new {@clss="btn btn-primary btn-md"})
+        @*Viitame PyhasControlleride ja Index meetodile*@
+        <p class="lead">Uuri meie pakkumised: </p>
+        @Html.ActionLink("Meie pühad", "Index", "Pyhas", null, new { @clss = "btn btn-primary btn-md" })
+    </div>
+    <div class="row">
+        @*Viitame HomeControllerile, sest Ankeet meetod asub seal!*@
+        <p class="lead">Tee oma valik: </p>
+        @Html.ActionLink("Vastan küsimustele", "Ankeet", "Ankeet", null, new { @clss = "btn btn-primary btn-md" })
     </div>
 </main>
