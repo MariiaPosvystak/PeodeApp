@@ -81,7 +81,7 @@ namespace PeadeApp_.Controllers
                 WebMail.SmtpPort = 587;
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "posvystakmariia@gmail.com";
-                WebMail.Password = "yxnx fpdc cpeb tqny";
+                WebMail.Password = "";
                 WebMail.From = "posvystakmariia@gmail.com";
                 string sisu = "";
                 if (onkutse)
