@@ -1,0 +1,31 @@
+﻿@model PeadeApp.Models.Kylaline
+@{
+    ViewBag.Title = "Tänan osalemise eest!";
+}
+<h2>Aitäh, @Model.Nimi!</h2>
+<p>Sinu vastus on edukalt salvestatud</p>
+@if (Model.OnKutse)
+{
+    <p class="text-success">
+        <strong>Rõõm kuulda! Ootame sind üritusele @ViewBag.Pyhanimetus</strong>
+    </p>
+    <div class="image-container">
+        <img src="~/Image/@ViewBag.Pilt" style="width:300px;" />
+    </div>
+    <p><a href="@Url.Action("Index", "Home")">Tagasi</a></p>
+}
+else
+{
+    <p class="text-danger">
+        <strong> Kahju, et ei saa tulla</strong>
+    </p>
+    <div class="image-container">
+        <img src="~/Image/@ViewBag.Pilt" style="width:300px;" />
+    </div>
+    <p><a href="@Url.Action("Index", "Home")">Tagasi</a></p>
+}
+@*<p>Ootame/ei oota sind üritusel @ViewBag.Pyhanimetus!</p>
+    <div class="image-container">
+        <img src="~/Image/@ViewBag.Pilt" style="width:300px;"/>
+    </div>*@
+@Html.ActionLink("Tagasi avalehele", "Index", "Home", null, new { @class = "btn btn-default" })
