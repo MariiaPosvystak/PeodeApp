@@ -1,0 +1,67 @@
+﻿@model PeadeApp.Models.Kylaline
+
+@{ 
+    ViewBag.Title = "Osalemine ürituses";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Registreerimine üritusele</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nimi, "Sinu nimi: ", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nimi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nimi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, "Epost: ", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PyhaId, "Vali üritus", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.PyhaId, (SelectList)ViewBag.Pyhad, "Vali üritus...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PyhaId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OnKutse, "Kas osaled: ", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.DropDownListFor(model => model.OnKutse, new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Jah, tulen koos kutsutud inimesega", Value="true"},
+                    new SelectListItem { Text = "Ei, kahjuks ei saa osaleda", Value="false"}
+                }, "Value", "Text"), "Vali...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OnKutse, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

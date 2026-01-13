@@ -11,6 +11,7 @@ using PeadeApp_.Models;
 
 namespace PeadeApp_.Controllers
 {
+    //[Authorize]
     public class PyhasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
