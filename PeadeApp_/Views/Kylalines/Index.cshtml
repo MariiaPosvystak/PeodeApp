@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PeadeApp.Models.Kylaline>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Külaliste haldus @(ViewBag.Filter != null?"-"+ViewBag.Filter: "")</h2>
+
+<p>
+    @Html.ActionLink("Kõik külalised", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Tulevad", "Tulevad", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Ei ule", "MitteTulevad", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Külalise nimi
+        </th>
+        <th>
+            E-post
+        </th>
+        <th>
+            Üritus
+        </th>
+        <th>
+            Tegevused
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pyha.Nimetus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

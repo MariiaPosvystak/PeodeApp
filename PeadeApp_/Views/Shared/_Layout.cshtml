@@ -21,8 +21,18 @@
                     <li>@Html.ActionLink("Avaleht", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Meiest", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Pühad", "Index", "Pyhas", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Vastused", "Ankeet", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Pühad", "Index", "Pyhas", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Vastused", "Index", "Kylalines", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Vastused", "Ankeet", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
                 </ul>
                  @Html.Partial("_LoginPartial")
             </div>
